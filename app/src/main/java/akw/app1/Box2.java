@@ -1,5 +1,7 @@
 package akw.app1;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class Box2 {
@@ -10,6 +12,13 @@ public class Box2 {
     public Box2(int length, int width) {
         this.length = length;
         this.width = width;
+
+        if(length >= 4 || length <=  1) {
+            throw new IllegalArgumentException();
+        }
+
+//        require(suit in 1..4)
+//        require(value in 1..13)
     }
 
     public int getHeight() {
@@ -28,6 +37,7 @@ public class Box2 {
         this.width = width;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return "Box2{" +

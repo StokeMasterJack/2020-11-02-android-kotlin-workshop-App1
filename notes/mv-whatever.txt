@@ -1,0 +1,16 @@
+
+
+Controller
+  event handlers
+    user click
+    data coming back from net work
+  Interacts with your bus logic
+  Updates the model
+
+View -> Model
+Model - Data Person class
+
+Box
+  len
+  wid
+  computeArea

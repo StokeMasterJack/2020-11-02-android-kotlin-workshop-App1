@@ -1,0 +1,3 @@
+activity - like a main
+
+lifecycle

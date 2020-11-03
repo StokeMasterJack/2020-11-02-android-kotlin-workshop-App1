@@ -6,14 +6,18 @@ private val rng: Random = Random()
 
 class Deck(shuffle: Boolean = true) {
 
-    private val _cards = mutableListOf<Card>()
+    private val _cards: MutableList<Card> = mutableListOf<Card>()
 
     init {
+
+//        val r: IntRange = 1..6
+
         for (s in 1..4) {
             for (v in 1..13) {
                 _cards.add(Card(value = v, suit = s))
             }
         }
+
         if (shuffle) repeat(10000) {
             val i1 = rng.nextInt(52)
             val i2 = rng.nextInt(52)

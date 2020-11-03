@@ -25,6 +25,7 @@ class DeckTest {
     }
 
     private fun renderDeck(d1: Deck) {
+
         d1.cards.forEach { println(it.name) }
     }
 

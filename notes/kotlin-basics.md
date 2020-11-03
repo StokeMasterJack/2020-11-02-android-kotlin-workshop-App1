@@ -27,3 +27,7 @@ when (i.e. switch)
 Range
 
 Named params
+
+Default lists are Immutable
+    List
+    MutableList

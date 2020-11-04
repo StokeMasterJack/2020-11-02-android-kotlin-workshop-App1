@@ -1,7 +1,6 @@
 package akw.app1
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
@@ -9,8 +8,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
@@ -32,9 +29,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Blackjack() {
 
-//    val g = Game(shuffle = true)
-
-    val (game, setGame) = remember { mutableStateOf(Game(shuffle = true).deal()) }
+    val game = Game(shuffle = true)
 
     MaterialTheme() {
         Surface(color = Color.LightGray, modifier = Modifier.fillMaxSize()) {
@@ -46,20 +41,17 @@ fun Blackjack() {
                     modifier = Modifier.padding(all = 10.dp).fillMaxWidth()
                 ) {
                     Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-                        Log.w("Blackjack", "Deal Clicked")
-                        println("DEAL")
 //                        game.deal()
-                        setGame(game.deal())
                     }) {
                         Text(text = "Deal")
                     }
                     Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-                        setGame(game.hit())
+
                     }) {
                         Text(text = "Hit")
                     }
                     Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-                        setGame(game.stay())
+
                     }) {
                         Text(text = "Stay")
                     }

@@ -1,4 +1,11 @@
 
 
+functional (copy game)
+
+
 remember:
     needed because: ui components are functions and local vars do not last
+
+MutableState
+    val state:MutableState<Game> = mutableStateOf(Game(shuffle = true))
+    updates the UI when the state changes

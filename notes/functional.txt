@@ -1,0 +1,9 @@
+Functional
+
+everything is immutable
+
+pure functions
+    fun foo(y:Int):Int{
+        return y+y
+
+    }

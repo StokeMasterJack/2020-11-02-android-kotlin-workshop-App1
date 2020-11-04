@@ -8,6 +8,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
@@ -29,7 +31,9 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Blackjack() {
 
-    val game = Game(shuffle = true)
+    val g = Game(shuffle = true)
+
+    val (game, setGame) = remember { mutableStateOf(Game(shuffle = true).deal()) }
 
     MaterialTheme() {
         Surface(color = Color.LightGray, modifier = Modifier.fillMaxSize()) {
@@ -40,18 +44,18 @@ fun Blackjack() {
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier.padding(all = 10.dp).fillMaxWidth()
                 ) {
-                    Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-//                        game.deal()
+                    Button(enabled = game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
+                        setGame(game.deal())
                     }) {
                         Text(text = "Deal")
                     }
-                    Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-
+                    Button(enabled = !game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
+                        setGame(game.hit())
                     }) {
                         Text(text = "Hit")
                     }
-                    Button(modifier = Modifier.padding(all = 10.dp), onClick = {
-
+                    Button(enabled = !game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
+                        setGame(game.stay())
                     }) {
                         Text(text = "Stay")
                     }

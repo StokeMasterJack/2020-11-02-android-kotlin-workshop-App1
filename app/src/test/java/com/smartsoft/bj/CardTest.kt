@@ -7,6 +7,16 @@ import org.junit.Test
 class CardTest {
 
     @Test
+    fun testCard1() {
+
+        val c1 = Card(value = 1, suit = 1)
+        val c2 = Card(value = 13, suit = 4)
+
+//        c1 = c2
+
+    }
+
+    @Test
     fun testCard() {
 
         val c1 = Card(value = 1, suit = 1)

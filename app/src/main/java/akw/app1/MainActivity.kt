@@ -8,6 +8,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
@@ -29,10 +30,10 @@ class MainActivity : AppCompatActivity() {
 fun Blackjack() {
     MaterialTheme() {
         Surface(color = Color.LightGray, modifier = Modifier.fillMaxSize()) {
-            Column(modifier = Modifier.padding(all = 10.dp)) {
+            Column(modifier = Modifier.padding(all = 10.dp).fillMaxWidth()) {
                 Text(text = "Blackjack")
 
-                Row {
+                Row(horizontalArrangement = Arrangement.Center,modifier = Modifier.padding(all = 10.dp).fillMaxWidth()) {
                     Button(modifier = Modifier.padding(all = 10.dp), onClick = {}) {
                         Text(text = "Deal")
                     }
@@ -43,7 +44,7 @@ fun Blackjack() {
                         Text(text = "Stay")
                     }
                 }
-                Row {
+                Row(modifier = Modifier.padding(bottom = 10.dp)) {
                     HandView("Player")
                     HandView("Dealer")
                 }

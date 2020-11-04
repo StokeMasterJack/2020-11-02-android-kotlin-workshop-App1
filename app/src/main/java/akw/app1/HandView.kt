@@ -1,6 +1,5 @@
 package akw.app1
 
-import akw.app1.blackjack.Hand
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -10,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.smartsoft.bj.core.Hand
 
 @Composable
 fun HandView(h: Hand) {

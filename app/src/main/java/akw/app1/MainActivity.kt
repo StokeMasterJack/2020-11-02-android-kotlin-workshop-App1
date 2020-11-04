@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -33,6 +32,15 @@ fun Blackjack() {
 
     val (game, setGame) = remember { mutableStateOf(Game(shuffle = true).deal()) }
 
+    val dispatch: BlackjackDispatch = { action ->
+        when (action) {
+            BlackjackAction.Deal -> setGame(game.deal())
+            BlackjackAction.Hit -> setGame(game.hit())
+            BlackjackAction.Stay -> setGame(game.stay())
+        }
+    }
+
+
     MaterialTheme {
         Surface(color = Color.LightGray, modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.padding(all = 10.dp).fillMaxWidth()) {
@@ -42,21 +50,7 @@ fun Blackjack() {
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier.padding(all = 10.dp).fillMaxWidth()
                 ) {
-                    Button(enabled = game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
-                        setGame(game.deal())
-                    }) {
-                        Text(text = "Deal")
-                    }
-                    Button(enabled = !game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
-                        setGame(game.hit())
-                    }) {
-                        Text(text = "Hit")
-                    }
-                    Button(enabled = !game.isGameOver,modifier = Modifier.padding(all = 10.dp), onClick = {
-                        setGame(game.stay())
-                    }) {
-                        Text(text = "Stay")
-                    }
+                    ButtonsView(game.isGameOver, dispatch)
                 }
                 Row(modifier = Modifier.padding(bottom = 10.dp)) {
                     HandView(game.ph)

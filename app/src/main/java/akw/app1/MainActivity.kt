@@ -31,11 +31,9 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Blackjack() {
 
-    val g = Game(shuffle = true)
-
     val (game, setGame) = remember { mutableStateOf(Game(shuffle = true).deal()) }
 
-    MaterialTheme() {
+    MaterialTheme {
         Surface(color = Color.LightGray, modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.padding(all = 10.dp).fillMaxWidth()) {
                 Text(text = "Blackjack")
